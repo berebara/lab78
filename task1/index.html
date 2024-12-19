@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="chill guy, chill guy meme, just a chill guy, chill guy MEM, chill guy wallpaper, chill guy png, обои chill guy, chill guy стикеры">
+    <meta name="description" content="Fan club of Chill Guy lovers">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="images/favicon.ico"                    
+    type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>chillhub</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="images/logo.svg" alt="Logo">
+        </div>
+        <a href="#">About</a>
+        <a href="#">Contacts</a>
+    </nav>
+
+    <div class="slider">
+        <img src="images/slide_1.png" class="active" alt="Slide 1">
+        <img src="images/slide_2.png" alt="Slide 2">
+        <img src="images/slide_3.png" alt="Slide 3">
+        <img src="images/slide_4.png" alt="Slide 4">
+
+        <span class="arrow left" onclick="prevSlide()">&#10094;</span>
+        <span class="arrow right" onclick="nextSlide()">&#10095;</span>
+    </div>
+
+    <section class="content-section">
+        <div class="content">
+            <img src="images/article.png" alt="Article Image">
+            <div class="content-description">
+                <h2>Phenomen of Chill Guy</h2>
+                <p>
+                    Who is Chill Guy? In this article we'll discuss about phenomem of Chill Guy.
+                </p>
+                <a href="#read-more" class="read-button">Read More</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="grid-section">
+        <div class="grid">
+            <div>10 euro</div>
+            <div>20 euro</div>
+            <div>50 euro</div>
+            <div>100 euro</div>
+        </div>
+
+        <div class="grid-text">
+            <p>Donate to Chill Guy</p>
+            <a href="#donate-action" class="donate-button">Donate</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://www.youtube.com/chillguy" target="_blank" class="youtube" aria-label="YouTube">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://telegram.org/chillguy" target="_blank" class="telegram" aria-label="Telegram">
+              <i class="fab fa-telegram"></i>
+            </a>
+        </div>
+        <p>&copy; 2024 chillhub. All rights are not reserved.</p>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slider img');
+        let slideInterval = setInterval(nextSlide, 5000); 
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active', 'previous');
+                if (i === index) {
+                    slide.classList.add('active');
+                } else if (i === (index - 1 + slides.length) % slides.length) {
+                    slide.classList.add('previous');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        document.querySelector('.arrow.left').onclick = function() {
+            clearInterval(slideInterval);
+            prevSlide();
+            slideInterval = setInterval(nextSlide, 5000); 
+        };
+
+        document.querySelector('.arrow.right').onclick = function() {
+            clearInterval(slideInterval);
+            nextSlide();
+            slideInterval = setInterval(nextSlide, 5000); 
+        };
+    </script>
+</body>
+</html>
